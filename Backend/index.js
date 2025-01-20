@@ -25,6 +25,8 @@ app.use("/api/createaccounts", Accountroutes);
 app.use("/api/createbudgets", BudgetRoutes);
 app.use("/api/categories", categoryRoutes);
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, "0.0.0.0");
+
+app.on("listening", () => {
   console.log(`Server is running on port ${process.env.PORT}`);
 });
