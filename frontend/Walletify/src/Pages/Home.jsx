@@ -60,12 +60,12 @@ const HomePage = () => {
               Let's get started and take control of your finances today!
             </p>
             <div className="text-center">
-              <a
+              <Link
                 href="/signup"
                 className="inline-block text-blue-600 bg-white py-2 px-6 rounded-lg  border-spacing-1 shadow hover:bg-blue-700 transition duration-200"
               >
                 Get Started
-              </a>
+              </Link>
             </div>
           </div>
         </div>

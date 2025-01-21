@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../utils/Axios";
 
 const SignupPage = () => {
@@ -111,7 +111,7 @@ const SignupPage = () => {
         </form>
         <p className="text-center mt-4">
           Already have an account?{" "}
-          <a href="/login" className="text-primary">Login</a>
+          <Link href="/login" className="text-primary">Login</Link>
         </p>
       </div>
     </div>

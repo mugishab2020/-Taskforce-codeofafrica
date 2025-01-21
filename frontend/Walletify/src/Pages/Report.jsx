@@ -59,7 +59,6 @@ const Report = () => {
     <div className="container my-5 p-4 bg-light rounded shadow">
       <h2 className="text-center mb-4">Account Transactions</h2>
 
-      {/* Error and Success Messages */}
       {errorMessage && (
         <div className="alert alert-danger" role="alert">
           {errorMessage}
@@ -71,10 +70,8 @@ const Report = () => {
         </div>
       )}
 
-      {/* Form Section */}
       <form onSubmit={handleSubmit} className="mb-4">
         <div className="row mb-3">
-          {/* Account Selection */}
           <div className="col-md-4">
             <label htmlFor="account" className="form-label">Select an Account:</label>
             <select
@@ -92,7 +89,7 @@ const Report = () => {
             </select>
           </div>
 
-          {/* Start Date */}
+          
           <div className="col-md-4">
             <label htmlFor="startDate" className="form-label">Start Date:</label>
             <input

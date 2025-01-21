@@ -1,12 +1,15 @@
 import React from "react";
 import Navbar from "../Component/Navbar";
 import axiosInstance from "../utils/Axios";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [errorMessage, setErrorMessage] = React.useState("");
   const [successMessage, setSuccessMessage] = React.useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,6 +23,7 @@ const LoginPage = () => {
         setSuccessMessage("Logged in successfully!");
         console.log("Logged in successfully!");
         setErrorMessage("");
+        navigate('/dashboard')
       }
     } catch (error) {
       setErrorMessage("Invalid email or password!");
@@ -95,9 +99,9 @@ const LoginPage = () => {
           </form>
           <p className="text-center mt-4">
             Don't have an account?{" "}
-            <a href="/signup" className="text-primary">
+            <Link href="/signup" className="text-primary">
               Sign up
-            </a>
+            </Link>
           </p>
         </div>
       </div>
