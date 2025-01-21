@@ -60,24 +60,25 @@ export const createTransaction = async (req, res) => {
   }
 };
 
-export const getTransactionsByType = async (req, res) => {
+export const getTransactionsByAccountId = async (req, res) => {
   try {
-    const { type } = req.params;
-    if (!["credit", "debit"].includes(type)) {
-      return res
-        .status(400)
-        .json({ message: 'Type must be either "credit" or "debit".' });
-    }
+    const { account_id } = req.params;
 
-    const transactions = await Transaction.find({ Type: type });
+    const creditTransactions = await Transaction.find({
+      account_id,
+      type: "credit",
+    });
+    const debitTransactions = await Transaction.find({
+      account_id,
+      type: "debit",
+    });
 
-    if (!transactions || transactions.length === 0) {
-      return res
-        .status(404)
-        .json({ message: `No ${type} transactions found.` });
-    }
+    const transactionData = {
+      credit: creditTransactions,
+      debit: debitTransactions,
+    };
 
-    res.status(200).json(transactions);
+    res.status(200).json(transactionData);
   } catch (error) {
     res.status(500).json({
       message: "Error fetching transactions by type.",
@@ -85,6 +86,7 @@ export const getTransactionsByType = async (req, res) => {
     });
   }
 };
+
 export const getBalance = async (req, res) => {
   try {
     const { account } = req;
@@ -93,6 +95,27 @@ export const getBalance = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       message: "Error fetching account balance.",
+      error: error.message,
+    });
+  }
+};
+
+export const getTransactions = async (req, res) => {
+  const { accountId, endDate, startDate } = req.query;
+  console.log(req.query);
+  try {
+    const transactions = await Transaction.find({
+      created_at: {
+        $gte: new Date(startDate),
+        $lte: new Date(endDate),
+      },
+      account_id: accountId,
+    });
+
+    res.status(200).json(transactions);
+  } catch (error) {
+    res.status(500).json({
+      message: "Error fetching all transactions.",
       error: error.message,
     });
   }
