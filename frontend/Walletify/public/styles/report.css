@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff;
+    /* Light blue background */
+}
+
+.report-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    /* White background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.report-title {
+    text-align: center;
+    color: #0056b3;
+    /* Dark blue */
+}
+
+.report-form label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #0056b3;
+    /* Dark blue */
+}
+
+.report-form select,
+.report-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #d0e0f0;
+    border-radius: 4px;
+}
+
+.submit-button {
+    background-color: #0056b3;
+    /* Dark blue */
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submit-button:hover {
+    background-color: #004494;
+    /* Slightly darker blue */
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.success-message {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.transactions-section {
+    margin-top: 20px;
+}
+
+.transactions-title {
+    color: #0056b3;
+    /* Dark blue */
+}
+
+.transactions-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.transactions-table th,
+.transactions-table td {
+    border: 1px solid #d0e0f0;
+    padding: 10px;
+    text-align: left;
+}
+
+.transactions-table th {
+    background-color: #0056b3;
+    color: #ffffff;
+}
+
+.transactions-table tr:nth-child(even) {
+    background-color: #f0f8ff;
+    /* Light blue for alternating rows */
+}
