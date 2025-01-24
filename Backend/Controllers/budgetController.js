@@ -4,7 +4,7 @@ import Budget from "../Models/Budget.js";
 export const createAccount = async (req, res) => {
   try {
     const { user } = req;
-    const { name } = req.body;
+    const { name, initialBalance } = req.body;
 
     if (!name) {
       return res.status(400).json({ message: "All fields are required." });
@@ -19,7 +19,7 @@ export const createAccount = async (req, res) => {
 
     const newAccount = new Account({
       name,
-      balance: 0,
+      balance: initialBalance,
       user_id: user.id,
     });
 
