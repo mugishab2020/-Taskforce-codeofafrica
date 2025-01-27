@@ -5,9 +5,9 @@ import mongoose from "mongoose";
 export const createTransaction = async (req, res) => {
   const { account } = req;
   try {
-    const { Type, amount, category_id } = req.body;
+    const { Type, amount, accountName, category_id } = req.body;
 
-    if (!Type || !amount || !category_id) {
+    if (!Type || !accountName || !amount || !category_id) {
       return res.status(400).json({ message: "All fields are required." });
     }
 
@@ -33,6 +33,7 @@ export const createTransaction = async (req, res) => {
       const newTransaction = new Transaction({
         Type,
         amount,
+        accountName,
         account_id: account._id,
         category_id,
       });

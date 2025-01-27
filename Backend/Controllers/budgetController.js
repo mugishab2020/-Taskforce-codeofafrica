@@ -52,6 +52,23 @@ export const getAccount = async (req, res) => {
     });
   }
 };
+export const getBudgetbyAccountId = async (req, res) => {
+  try {
+    const { account_id } = req.params;
+
+    const budgets = await Budget.find({ account_id });
+    if (budgets.length === 0) {
+      return res.status(404).json({ message: "Budgets not found." });
+    }
+
+    res.status(200).json(budgets);
+  } catch (error) {
+    res.status(500).json({
+      message: "Error fetching budgets.",
+      error: error.message,
+    });
+  }
+};
 export const createBudget = async (req, res) => {
   try {
     const { name, description, amount } = req.body;
