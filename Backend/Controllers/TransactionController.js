@@ -33,7 +33,6 @@ export const createTransaction = async (req, res) => {
       const newTransaction = new Transaction({
         Type,
         amount,
-        accountName,
         account_id: account._id,
         category_id,
       });
