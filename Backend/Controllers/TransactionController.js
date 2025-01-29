@@ -65,7 +65,7 @@ export const getTransactionsByAccountId = async (req, res) => {
     const { account_id } = req.params;
 
     const transactions = await Transaction.find({
-      Type: "credit" || "debit",
+      Type: s"debit",
     });
 
     res.status(200).json(transactions);
