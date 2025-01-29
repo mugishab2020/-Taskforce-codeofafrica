@@ -62,10 +62,11 @@ export const createTransaction = async (req, res) => {
 
 export const getTransactionsByAccountId = async (req, res) => {
   try {
-    const { account_id } = req.params;
+    const { accountId } = req.params;
+    console.log("AccountId", req.params);
 
     const transactions = await Transaction.find({
-      account_id: account_id,
+      account_id: accountId,
     });
 
     res.status(200).json(transactions);
@@ -92,7 +93,6 @@ export const getBalance = async (req, res) => {
 
 export const getTransactions = async (req, res) => {
   const { accountId, endDate, startDate } = req.query;
-  console.log(req.query);
   try {
     const transactions = await Transaction.find({
       created_at: {

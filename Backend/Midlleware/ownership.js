@@ -5,7 +5,6 @@ const checkAccountOwnership = async (req, res, next) => {
 
   const { id: userId } = req.user;
   const account = await Account.findById(account_id);
-  console.log(account_id);
 
   if (!account) {
     return res.status(404).json({ message: "Account not found." });
