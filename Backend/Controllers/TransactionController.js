@@ -5,9 +5,9 @@ import mongoose from "mongoose";
 export const createTransaction = async (req, res) => {
   const { account } = req;
   try {
-    const { Type, amount, accountName, category_id } = req.body;
+    const { Type, amount, category_id } = req.body;
 
-    if (!Type || !accountName || !amount || !category_id) {
+    if (!Type || !amount || !category_id) {
       return res.status(400).json({ message: "All fields are required." });
     }
 
@@ -33,7 +33,6 @@ export const createTransaction = async (req, res) => {
       const newTransaction = new Transaction({
         Type,
         amount,
-        accountName,
         account_id: account._id,
         category_id,
       });
@@ -65,24 +64,14 @@ export const getTransactionsByAccountId = async (req, res) => {
   try {
     const { account_id } = req.params;
 
-    const creditTransactions = await Transaction.find({
+    const transactions = await Transaction.find({
       account_id,
-      type: "credit",
-    });
-    const debitTransactions = await Transaction.find({
-      account_id,
-      type: "debit",
     });
 
-    const transactionData = {
-      credit: creditTransactions,
-      debit: debitTransactions,
-    };
-
-    res.status(200).json(transactionData);
+    res.status(200).json(transactions);
   } catch (error) {
     res.status(500).json({
-      message: "Error fetching transactions by type.",
+      message: "Error fetching transactions.",
       error: error.message,
     });
   }

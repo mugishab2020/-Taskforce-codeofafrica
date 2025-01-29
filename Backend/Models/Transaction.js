@@ -8,7 +8,6 @@ const Transactionschema = new mongoose.Schema({
     required: true,
     enum: ["credit", "debit"],
   },
-  accountName: { type: String, required: true },
   amount: { type: Number, required: true },
   account_id: {
     type: mongoose.Schema.Types.ObjectId,
